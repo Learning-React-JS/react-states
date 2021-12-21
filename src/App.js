@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
 
 function App() {
+  const [name, setName] = useState("Ilkay");
+  const [age, setAge] = useState(34);
+  const [friends, setFriends] = useState(["Ahmet", "Mehmet"]);
+
+  console.log(name, age);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Hello {name}</h1>
+      <h2>{age}</h2>
+      <button onClick={() => setName("Polat")}>Change Name</button>
+      <button onClick={() => setAge(25)}>Change Age</button>
+      <hr />
+      <br />
+      <br />
+      <h2>Friends</h2>
+      {friends.map((friend, key) => (
+        <div key={key}>{friend}</div>
+      ))}
+
+      <button onClick={() => setFriends([...friends, "Fatma"])}>
+        Add New Friend
+      </button>
     </div>
   );
 }
